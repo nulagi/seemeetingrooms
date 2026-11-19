@@ -5,6 +5,9 @@
     <meta http-equiv="refresh" content="900">
     <title>Meeting Room Schedule — Thursday, November 19, 2026</title>
     <style>
+        :root {
+            --room-col-width: clamp(240px, 14vw, 380px);
+        }
         html, body {
             height: 100vh;
             width: 100vw;
@@ -19,7 +22,7 @@
         .screen-buffer {
             width: 100vw;
             height: 100vh;
-            padding: 35px;
+            padding: 40px;
             box-sizing: border-box;
             display: flex;
             justify-content: center;
@@ -31,8 +34,8 @@
             margin-left: -3px;
             margin-top: -1px;
             background: #ffffff;
-            padding: 14px 18px;
-            border-radius: 10px;
+            padding: clamp(14px, 1.2vh, 26px) clamp(18px, 1.4vw, 32px);
+            border-radius: 12px;
             box-sizing: border-box;
             display: flex;
             flex-direction: column;
@@ -43,67 +46,70 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 10px;
-            border-bottom: 1px solid #e2e8f0;
-            padding-bottom: 8px;
+            margin-bottom: clamp(10px, 1vh, 18px);
+            border-bottom: 1.5px solid #e2e8f0;
+            padding-bottom: clamp(8px, 0.8vh, 14px);
             flex-shrink: 0;
         }
         h1 {
-            font-size: 1.45rem;
-            margin: 0 0 2px 0;
+            font-size: clamp(1.5rem, 2.2vw, 3.2rem);
+            margin: 0 0 3px 0;
             color: #0f172a;
             letter-spacing: -0.01em;
+            line-height: 1.1;
         }
         .sub {
             color: #475569;
-            font-size: 0.95rem;
+            font-size: clamp(1rem, 1.45vw, 2.1rem);
             font-weight: 600;
+            line-height: 1.2;
         }
         .header-right {
             display: flex;
             align-items: center;
-            gap: 14px;
+            gap: clamp(14px, 1.5vw, 28px);
         }
         .generated-stamp {
-            font-size: 0.78rem;
+            font-size: clamp(0.85rem, 0.95vw, 1.35rem);
             color: #64748b;
             font-weight: 500;
         }
         .clock {
             background: #f8fafc;
-            border: 1px solid #cbd5e1;
-            padding: 5px 14px;
-            border-radius: 6px;
+            border: 1.5px solid #cbd5e1;
+            padding: clamp(6px, 0.6vh, 12px) clamp(14px, 1.2vw, 24px);
+            border-radius: 8px;
             font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-            font-size: 1.2rem;
+            font-size: clamp(1.3rem, 1.8vw, 2.6rem);
             font-weight: 700;
             color: #334155;
+            line-height: 1.1;
         }
         .schedule-grid {
             flex: 1;
             display: flex;
             flex-direction: column;
             min-height: 0;
-            border: 1px solid #cbd5e1;
-            border-radius: 6px;
+            border: 1.5px solid #94a3b8;
+            border-radius: 8px;
             overflow: hidden;
             background: #F5F5F5;
         }
         .timeline-header-row {
             display: grid;
-            grid-template-columns: 220px 1fr;
+            grid-template-columns: var(--room-col-width) 1fr;
             background: #e2e8f0;
             border-bottom: 1.5px solid #94a3b8;
-            height: 36px;
+            height: clamp(38px, 3.8vh, 58px);
             flex-shrink: 0;
         }
         .corner-spacer {
             display: flex;
             align-items: center;
             justify-content: flex-end;
-            padding-right: 14px;
+            padding-right: clamp(12px, 1vw, 20px);
             font-weight: 700;
-            font-size: 0.85rem;
+            font-size: clamp(0.9rem, 1.05vw, 1.5rem);
             color: #334155;
             border-right: 1.5px solid #94a3b8;
             background: #e2e8f0;
@@ -117,8 +123,8 @@
             border-left: 1px solid #cbd5e1;
             display: flex;
             align-items: center;
-            padding-left: 6px;
-            font-size: 0.85rem;
+            padding-left: clamp(6px, 0.5vw, 12px);
+            font-size: clamp(0.95rem, 1.15vw, 1.65rem);
             font-weight: 700;
             color: #1e293b;
             box-sizing: border-box;
@@ -128,10 +134,10 @@
         }
         .end-hour-label {
             position: absolute;
-            right: 6px;
+            right: clamp(6px, 0.5vw, 12px);
             top: 50%;
             transform: translateY(-50%);
-            font-size: 0.85rem;
+            font-size: clamp(0.95rem, 1.15vw, 1.65rem);
             font-weight: 700;
             color: #1e293b;
         }
@@ -145,7 +151,7 @@
         .room-row {
             flex: 1;
             display: grid;
-            grid-template-columns: 220px 1fr;
+            grid-template-columns: var(--room-col-width) 1fr;
             border-bottom: 1px dashed #cbd5e1;
             min-height: 0;
             position: relative;
@@ -156,7 +162,7 @@
         .room-label {
             background: #ffffff;
             border-right: 1.5px solid #94a3b8;
-            padding: 2px 14px;
+            padding: 3px clamp(12px, 1vw, 20px);
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -167,16 +173,16 @@
         }
         .room-name {
             font-weight: 800;
-            font-size: 0.92rem;
+            font-size: clamp(1rem, 1.25vw, 1.85rem);
             color: #0f172a;
             line-height: 1.15;
         }
         .room-sub {
-            font-size: 0.72rem;
+            font-size: clamp(0.8rem, 0.98vw, 1.4rem);
             color: #475569;
-            font-weight: 500;
+            font-weight: 600;
             line-height: 1.15;
-            margin-top: 1px;
+            margin-top: 2px;
         }
         .room-timeline {
             position: relative;
@@ -200,12 +206,12 @@
         }
         .event-block {
             position: absolute;
-            top: 2px;
-            bottom: 2px;
+            top: 3px;
+            bottom: 3px;
             border: 1.5px solid #333333;
-            border-left-width: 5px;
-            border-radius: 5px;
-            padding: 2px 6px;
+            border-left-width: 6px;
+            border-radius: 6px;
+            padding: 3px 8px;
             box-sizing: border-box;
             overflow: hidden;
             display: flex;
@@ -214,14 +220,14 @@
             align-items: center;
             text-align: center;
             z-index: 3;
-            box-shadow: 0 1px 3px rgba(15, 23, 42, 0.12);
+            box-shadow: 0 1px 4px rgba(15, 23, 42, 0.14);
         }
         .ev-summary {
             font-weight: 800;
-            font-size: 0.85rem;
-            line-height: 1.12;
+            font-size: clamp(0.95rem, 1.15vw, 1.65rem);
+            line-height: 1.15;
             color: #ffffff;
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
             white-space: normal;
             overflow-wrap: anywhere;
             word-break: break-word;
@@ -233,15 +239,15 @@
             min-height: 0;
         }
         .compact-event .ev-summary {
-            font-size: 0.74rem;
+            font-size: clamp(0.85rem, 1.0vw, 1.4rem);
             -webkit-line-clamp: 2;
         }
         .ev-organizer {
-            font-size: 0.68rem;
+            font-size: clamp(0.78rem, 0.92vw, 1.3rem);
             font-weight: 600;
             color: #ffffff;
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
-            margin-top: 1px;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+            margin-top: 2px;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -252,7 +258,7 @@
             position: absolute;
             top: 0;
             bottom: 0;
-            left: 220px;
+            left: var(--room-col-width);
             width: 0;
             background-color: #E0E0E0;
             opacity: 0.8;
@@ -263,13 +269,13 @@
         .loading-overlay {
             flex: 1;
             background: #CCCCCC;
-            border-radius: 6px;
+            border-radius: 8px;
             display: flex;
             justify-content: center;
             align-items: center;
         }
         .loading-text {
-            font-size: 3rem;
+            font-size: clamp(2.5rem, 5vw, 7rem);
             font-weight: 800;
             color: #444444;
             letter-spacing: 0.05em;
@@ -280,25 +286,28 @@
         const END_HOUR = 18;
         const TOTAL_HOURS = END_HOUR - START_HOUR;
         const IS_TARGET_TODAY = true;
-        const LABEL_COL_WIDTH = 220;
+
+        function getLabelColWidthPx() {
+            const firstLabel = document.querySelector('.room-label');
+            return firstLabel ? firstLabel.getBoundingClientRect().width : 300;
+        }
 
         function fitEventText() {
             document.querySelectorAll('.event-block').forEach(block => {
                 const summary = block.querySelector('.ev-summary');
                 if (!summary) return;
 
-                // Reset to base size before measuring
-                let sizeRem = block.classList.contains('compact-event') ? 0.74 : 0.85;
-                const minSizeRem = 0.62;
-                summary.style.fontSize = `${sizeRem}rem`;
+                // Clear inline override so CSS clamp() sets the starting 4K/viewport size
+                summary.style.fontSize = '';
+                let currentPx = parseFloat(window.getComputedStyle(summary).fontSize) || 24;
+                const minPx = 14;
 
-                // Shrink slightly if text overflows block height or width
                 while (
-                    sizeRem > minSizeRem &&
+                    currentPx > minPx &&
                     (block.scrollHeight > block.clientHeight || summary.scrollWidth > summary.clientWidth)
                 ) {
-                    sizeRem = Math.max(minSizeRem, +(sizeRem - 0.03).toFixed(2));
-                    summary.style.fontSize = `${sizeRem}rem`;
+                    currentPx = Math.max(minPx, currentPx - 1);
+                    summary.style.fontSize = `${currentPx}px`;
                 }
             });
         }
@@ -315,13 +324,16 @@
 
             if (!roomsBody || !shade) return;
 
+            const labelWidth = getLabelColWidthPx();
+            shade.style.left = `${labelWidth}px`;
+
             if (!IS_TARGET_TODAY) {
                 shade.style.display = 'none';
                 return;
             }
 
             const currentDecimalHour = now.getHours() + (now.getMinutes() / 60) + (now.getSeconds() / 3600);
-            const timelineWidth = roomsBody.clientWidth - LABEL_COL_WIDTH;
+            const timelineWidth = roomsBody.clientWidth - labelWidth;
 
             if (currentDecimalHour <= START_HOUR) {
                 shade.style.display = 'none';
@@ -356,7 +368,7 @@
                     <div class="sub">Thursday, November 19, 2026</div>
                 </div>
                 <div class="header-right">
-                    <div class="generated-stamp">Generated at 13:38 on 19 November 2026</div>
+                    <div class="generated-stamp">Generated at 13:44 on 19 November 2026</div>
                     <div id="live-clock" class="clock">00:00:00</div>
                 </div>
             </div>
@@ -392,7 +404,7 @@
                 <div class="grid-lines"><div class="hour-grid-col"></div><div class="hour-grid-col"></div><div class="hour-grid-col"></div><div class="hour-grid-col"></div><div class="hour-grid-col"></div><div class="hour-grid-col"></div><div class="hour-grid-col"></div><div class="hour-grid-col"></div><div class="hour-grid-col"></div><div class="hour-grid-col"></div></div>
                 
             <div class="event-block" 
-                 style="left: calc(10.0000% + 2px); width: calc(80.0000% - 4px); background-color: #ABBC9F; border-color: #839676; border-left-color: #637556;"
+                 style="left: calc(10.0000% + 3px); width: calc(80.0000% - 6px); background-color: #ABBC9F; border-color: #839676; border-left-color: #637556;"
                  title="UPSCALE (09:00–17:00) — Ashar Aslam">
                 <div class="ev-summary">UPSCALE</div>
                 <div class="ev-organizer">(Ashar Aslam)</div>
@@ -421,7 +433,7 @@
                 <div class="grid-lines"><div class="hour-grid-col"></div><div class="hour-grid-col"></div><div class="hour-grid-col"></div><div class="hour-grid-col"></div><div class="hour-grid-col"></div><div class="hour-grid-col"></div><div class="hour-grid-col"></div><div class="hour-grid-col"></div><div class="hour-grid-col"></div><div class="hour-grid-col"></div></div>
                 
             <div class="event-block" 
-                 style="left: calc(15.0000% + 2px); width: calc(60.0000% - 4px); background-color: #ABBC9F; border-color: #839676; border-left-color: #637556;"
+                 style="left: calc(15.0000% + 3px); width: calc(60.0000% - 6px); background-color: #ABBC9F; border-color: #839676; border-left-color: #637556;"
                  title="Data Visualisation Training YES-DTN (09:30–15:30) — Demi Knight">
                 <div class="ev-summary">Data Visualisation Training YES-DTN</div>
                 <div class="ev-organizer">(Demi Knight)</div>
@@ -439,7 +451,7 @@
                 <div class="grid-lines"><div class="hour-grid-col"></div><div class="hour-grid-col"></div><div class="hour-grid-col"></div><div class="hour-grid-col"></div><div class="hour-grid-col"></div><div class="hour-grid-col"></div><div class="hour-grid-col"></div><div class="hour-grid-col"></div><div class="hour-grid-col"></div><div class="hour-grid-col"></div></div>
                 
             <div class="event-block" 
-                 style="left: calc(50.0000% + 2px); width: calc(10.0000% - 4px); background-color: #CE9E8D; border-color: #a87462; border-left-color: #8c5846;"
+                 style="left: calc(50.0000% + 3px); width: calc(10.0000% - 6px); background-color: #CE9E8D; border-color: #a87462; border-left-color: #8c5846;"
                  title="Climate-ice meeting (13:00–14:00) — Marie Sicard">
                 <div class="ev-summary">Climate-ice meeting</div>
                 <div class="ev-organizer">(Marie Sicard)</div>
@@ -457,7 +469,7 @@
                 <div class="grid-lines"><div class="hour-grid-col"></div><div class="hour-grid-col"></div><div class="hour-grid-col"></div><div class="hour-grid-col"></div><div class="hour-grid-col"></div><div class="hour-grid-col"></div><div class="hour-grid-col"></div><div class="hour-grid-col"></div><div class="hour-grid-col"></div><div class="hour-grid-col"></div></div>
                 
             <div class="event-block" 
-                 style="left: calc(60.0000% + 2px); width: calc(10.0000% - 4px); background-color: #ABBC9F; border-color: #839676; border-left-color: #637556;"
+                 style="left: calc(60.0000% + 3px); width: calc(10.0000% - 6px); background-color: #ABBC9F; border-color: #839676; border-left-color: #637556;"
                  title="H+ meeting (14:00–15:00) — Sami Samiei-Esfahany">
                 <div class="ev-summary">H+ meeting</div>
                 <div class="ev-organizer">(Sami Samiei-Esfahany)</div>
@@ -475,7 +487,7 @@
                 <div class="grid-lines"><div class="hour-grid-col"></div><div class="hour-grid-col"></div><div class="hour-grid-col"></div><div class="hour-grid-col"></div><div class="hour-grid-col"></div><div class="hour-grid-col"></div><div class="hour-grid-col"></div><div class="hour-grid-col"></div><div class="hour-grid-col"></div><div class="hour-grid-col"></div></div>
                 
             <div class="event-block" 
-                 style="left: calc(60.0000% + 2px); width: calc(10.0000% - 4px); background-color: #CE9E8D; border-color: #a87462; border-left-color: #8c5846;"
+                 style="left: calc(60.0000% + 3px); width: calc(10.0000% - 6px); background-color: #CE9E8D; border-color: #a87462; border-left-color: #8c5846;"
                  title="Private (14:00–15:00) — Eszter Kovacs">
                 <div class="ev-summary">Private</div>
                 <div class="ev-organizer">(Eszter Kovacs)</div>
@@ -493,21 +505,21 @@
                 <div class="grid-lines"><div class="hour-grid-col"></div><div class="hour-grid-col"></div><div class="hour-grid-col"></div><div class="hour-grid-col"></div><div class="hour-grid-col"></div><div class="hour-grid-col"></div><div class="hour-grid-col"></div><div class="hour-grid-col"></div><div class="hour-grid-col"></div><div class="hour-grid-col"></div></div>
                 
             <div class="event-block compact-event" 
-                 style="left: calc(60.0000% + 2px); width: calc(5.0000% - 4px); background-color: #ABBC9F; border-color: #839676; border-left-color: #637556;"
+                 style="left: calc(60.0000% + 3px); width: calc(5.0000% - 6px); background-color: #ABBC9F; border-color: #839676; border-left-color: #637556;"
                  title="Edinburgh EPS Climate and Magnetism (14:00–14:30) — Hannah Rogers">
                 <div class="ev-summary">Edinburgh EPS Climate and Magnetism</div>
                 
             </div>
             
             <div class="event-block" 
-                 style="left: calc(70.0000% + 2px); width: calc(10.0000% - 4px); background-color: #ABBC9F; border-color: #839676; border-left-color: #637556;"
+                 style="left: calc(70.0000% + 3px); width: calc(10.0000% - 6px); background-color: #ABBC9F; border-color: #839676; border-left-color: #637556;"
                  title="Nathan Bend - Attendance (15:00–16:00) — Nathan Bend">
                 <div class="ev-summary">Nathan Bend - Attendance</div>
                 <div class="ev-organizer">(Nathan Bend)</div>
             </div>
             
             <div class="event-block" 
-                 style="left: calc(80.0000% + 2px); width: calc(10.0000% - 4px); background-color: #ABBC9F; border-color: #839676; border-left-color: #637556;"
+                 style="left: calc(80.0000% + 3px); width: calc(10.0000% - 6px); background-color: #ABBC9F; border-color: #839676; border-left-color: #637556;"
                  title="Nathan Bend - Attendance (16:00–17:00) — Nathan Bend">
                 <div class="ev-summary">Nathan Bend - Attendance</div>
                 <div class="ev-organizer">(Nathan Bend)</div>
@@ -536,14 +548,14 @@
                 <div class="grid-lines"><div class="hour-grid-col"></div><div class="hour-grid-col"></div><div class="hour-grid-col"></div><div class="hour-grid-col"></div><div class="hour-grid-col"></div><div class="hour-grid-col"></div><div class="hour-grid-col"></div><div class="hour-grid-col"></div><div class="hour-grid-col"></div><div class="hour-grid-col"></div></div>
                 
             <div class="event-block" 
-                 style="left: calc(50.0000% + 2px); width: calc(10.0000% - 4px); background-color: #ABBC9F; border-color: #839676; border-left-color: #637556;"
+                 style="left: calc(50.0000% + 3px); width: calc(10.0000% - 6px); background-color: #ABBC9F; border-color: #839676; border-left-color: #637556;"
                  title="IGT Seminar (13:00–14:00) — Judith Schneider">
                 <div class="ev-summary">IGT Seminar</div>
                 <div class="ev-organizer">(Judith Schneider)</div>
             </div>
             
             <div class="event-block" 
-                 style="left: calc(80.0000% + 2px); width: calc(10.0000% - 4px); background-color: #ABBC9F; border-color: #839676; border-left-color: #637556;"
+                 style="left: calc(80.0000% + 3px); width: calc(10.0000% - 6px); background-color: #ABBC9F; border-color: #839676; border-left-color: #637556;"
                  title="Geophysics Career Seminar - DUG (16:00–17:00) — Charlotte  Botter">
                 <div class="ev-summary">Geophysics Career Seminar - DUG</div>
                 <div class="ev-organizer">(Charlotte  Botter)</div>
@@ -561,14 +573,14 @@
                 <div class="grid-lines"><div class="hour-grid-col"></div><div class="hour-grid-col"></div><div class="hour-grid-col"></div><div class="hour-grid-col"></div><div class="hour-grid-col"></div><div class="hour-grid-col"></div><div class="hour-grid-col"></div><div class="hour-grid-col"></div><div class="hour-grid-col"></div><div class="hour-grid-col"></div></div>
                 
             <div class="event-block" 
-                 style="left: calc(50.0000% + 2px); width: calc(10.0000% - 4px); background-color: #CE9E8D; border-color: #a87462; border-left-color: #8c5846;"
+                 style="left: calc(50.0000% + 3px); width: calc(10.0000% - 6px); background-color: #CE9E8D; border-color: #a87462; border-left-color: #8c5846;"
                  title="INP group meeting (13:00–14:00) — Dongting Xu">
                 <div class="ev-summary">INP group meeting</div>
                 <div class="ev-organizer">(Dongting Xu)</div>
             </div>
             
             <div class="event-block" 
-                 style="left: calc(70.0000% + 2px); width: calc(10.0000% - 4px); background-color: #CE9E8D; border-color: #a87462; border-left-color: #8c5846;"
+                 style="left: calc(70.0000% + 3px); width: calc(10.0000% - 6px); background-color: #CE9E8D; border-color: #a87462; border-left-color: #8c5846;"
                  title="Implementation Group (15:00–16:00) — Rachael Warwick">
                 <div class="ev-summary">Implementation Group</div>
                 <div class="ev-organizer">(Rachael Warwick)</div>
@@ -586,7 +598,7 @@
                 <div class="grid-lines"><div class="hour-grid-col"></div><div class="hour-grid-col"></div><div class="hour-grid-col"></div><div class="hour-grid-col"></div><div class="hour-grid-col"></div><div class="hour-grid-col"></div><div class="hour-grid-col"></div><div class="hour-grid-col"></div><div class="hour-grid-col"></div><div class="hour-grid-col"></div></div>
                 
             <div class="event-block" 
-                 style="left: calc(50.0000% + 2px); width: calc(10.0000% - 4px); background-color: #ABBC9F; border-color: #839676; border-left-color: #637556;"
+                 style="left: calc(50.0000% + 3px); width: calc(10.0000% - 6px); background-color: #ABBC9F; border-color: #839676; border-left-color: #637556;"
                  title="Climate-ice meeting (13:00–14:00) — Marie Sicard">
                 <div class="ev-summary">Climate-ice meeting</div>
                 <div class="ev-organizer">(Marie Sicard)</div>
@@ -604,7 +616,7 @@
                 <div class="grid-lines"><div class="hour-grid-col"></div><div class="hour-grid-col"></div><div class="hour-grid-col"></div><div class="hour-grid-col"></div><div class="hour-grid-col"></div><div class="hour-grid-col"></div><div class="hour-grid-col"></div><div class="hour-grid-col"></div><div class="hour-grid-col"></div><div class="hour-grid-col"></div></div>
                 
             <div class="event-block" 
-                 style="left: calc(60.0000% + 2px); width: calc(10.0000% - 4px); background-color: #CE9E8D; border-color: #a87462; border-left-color: #8c5846;"
+                 style="left: calc(60.0000% + 3px); width: calc(10.0000% - 6px); background-color: #CE9E8D; border-color: #a87462; border-left-color: #8c5846;"
                  title="Abby's PhD meetings (14:00–15:00) — Gabriel Pontes">
                 <div class="ev-summary">Abby's PhD meetings</div>
                 <div class="ev-organizer">(Gabriel Pontes)</div>
