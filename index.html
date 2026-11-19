@@ -6,7 +6,7 @@
     <title>Meeting Room Schedule — Thursday, November 19, 2026</title>
     <style>
         :root {
-            --room-col-width: clamp(360px, 18vw, 560px);
+            --room-col-width: clamp(320px, 16vw, 500px);
         }
         html, body {
             height: 100vh;
@@ -52,7 +52,7 @@
             flex-shrink: 0;
         }
         h1 {
-            font-size: clamp(34px, 2.5vw, 76px);
+            font-size: clamp(32px, 2.3vw, 70px);
             margin: 0 0 4px 0;
             color: #0f172a;
             letter-spacing: -0.01em;
@@ -60,7 +60,7 @@
         }
         .sub {
             color: #334155;
-            font-size: clamp(24px, 1.65vw, 52px);
+            font-size: clamp(22px, 1.5vw, 46px);
             font-weight: 700;
             line-height: 1.15;
         }
@@ -70,7 +70,7 @@
             gap: 28px;
         }
         .generated-stamp {
-            font-size: clamp(18px, 1.05vw, 32px);
+            font-size: clamp(16px, 0.95vw, 28px);
             color: #64748b;
             font-weight: 600;
         }
@@ -80,7 +80,7 @@
             padding: 8px 24px;
             border-radius: 8px;
             font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-            font-size: clamp(30px, 2.1vw, 66px);
+            font-size: clamp(28px, 1.95vw, 60px);
             font-weight: 700;
             color: #1e293b;
             line-height: 1.1;
@@ -100,7 +100,7 @@
             grid-template-columns: var(--room-col-width) 1fr;
             background: #e2e8f0;
             border-bottom: 2px solid #94a3b8;
-            height: clamp(52px, 4.2vh, 84px);
+            height: clamp(50px, 4vh, 78px);
             flex-shrink: 0;
         }
         .corner-spacer {
@@ -109,7 +109,7 @@
             justify-content: flex-end;
             padding-right: 18px;
             font-weight: 700;
-            font-size: clamp(22px, 1.25vw, 38px);
+            font-size: clamp(20px, 1.15vw, 35px);
             color: #334155;
             border-right: 2px solid #94a3b8;
             background: #e2e8f0;
@@ -124,7 +124,7 @@
             display: flex;
             align-items: center;
             padding-left: 10px;
-            font-size: clamp(22px, 1.35vw, 42px);
+            font-size: clamp(20px, 1.25vw, 38px);
             font-weight: 700;
             color: #1e293b;
             box-sizing: border-box;
@@ -137,7 +137,7 @@
             right: 10px;
             top: 50%;
             transform: translateY(-50%);
-            font-size: clamp(22px, 1.35vw, 42px);
+            font-size: clamp(20px, 1.25vw, 38px);
             font-weight: 700;
             color: #1e293b;
         }
@@ -173,12 +173,12 @@
         }
         .room-name {
             font-weight: 800;
-            font-size: clamp(24px, 1.5vw, 46px);
+            font-size: clamp(22px, 1.35vw, 42px);
             color: #0f172a;
             line-height: 1.12;
         }
         .room-sub {
-            font-size: clamp(19px, 1.15vw, 35px);
+            font-size: clamp(17px, 1.0vw, 30px);
             color: #475569;
             font-weight: 600;
             line-height: 1.15;
@@ -224,13 +224,13 @@
         }
         .ev-summary {
             font-weight: 800;
-            font-size: clamp(24px, 1.4vw, 44px);
-            line-height: 1.14;
+            font-size: clamp(16px, 0.92vw, 28px);
+            line-height: 1.15;
             color: #ffffff;
             text-shadow: 0 1px 3px rgba(0, 0, 0, 0.45);
             white-space: normal;
-            overflow-wrap: anywhere;
-            word-break: break-word;
+            overflow-wrap: normal;
+            word-break: normal;
             display: -webkit-box;
             -webkit-line-clamp: 3;
             -webkit-box-orient: vertical;
@@ -239,11 +239,11 @@
             min-height: 0;
         }
         .compact-event .ev-summary {
-            font-size: clamp(21px, 1.2vw, 38px);
+            font-size: clamp(15px, 0.82vw, 24px);
             -webkit-line-clamp: 2;
         }
         .ev-organizer {
-            font-size: clamp(19px, 1.05vw, 32px);
+            font-size: clamp(13px, 0.72vw, 21px);
             font-weight: 600;
             color: #ffffff;
             text-shadow: 0 1px 3px rgba(0, 0, 0, 0.45);
@@ -289,7 +289,7 @@
 
         function getLabelColWidthPx() {
             const firstLabel = document.querySelector('.room-label');
-            return firstLabel ? firstLabel.getBoundingClientRect().width : 420;
+            return firstLabel ? firstLabel.getBoundingClientRect().width : 400;
         }
 
         function fitEventText() {
@@ -298,8 +298,8 @@
                 if (!summary) return;
 
                 summary.style.fontSize = '';
-                let currentPx = parseFloat(window.getComputedStyle(summary).fontSize) || 40;
-                const minPx = 22;
+                let currentPx = parseFloat(window.getComputedStyle(summary).fontSize) || 24;
+                const minPx = 14;
 
                 while (
                     currentPx > minPx &&
@@ -367,7 +367,7 @@
                     <div class="sub">Thursday, November 19, 2026</div>
                 </div>
                 <div class="header-right">
-                    <div class="generated-stamp">Generated at 15:55 on 19 November 2026</div>
+                    <div class="generated-stamp">Generated at 15:57 on 19 November 2026</div>
                     <div id="live-clock" class="clock">00:00:00</div>
                 </div>
             </div>
