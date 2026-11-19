@@ -211,7 +211,7 @@
             border: 2px solid #333333;
             border-left-width: 7px;
             border-radius: 6px;
-            padding: 4px 10px;
+            padding: 4px 8px;
             box-sizing: border-box;
             overflow: hidden;
             display: flex;
@@ -224,7 +224,7 @@
         }
         .ev-summary {
             font-weight: 800;
-            font-size: clamp(16px, 0.92vw, 28px);
+            font-size: clamp(14px, 0.8vw, 24px);
             line-height: 1.15;
             color: #ffffff;
             text-shadow: 0 1px 3px rgba(0, 0, 0, 0.45);
@@ -239,14 +239,14 @@
             min-height: 0;
         }
         .compact-event .ev-summary {
-            font-size: clamp(15px, 0.82vw, 24px);
+            font-size: clamp(13px, 0.72vw, 20px);
             -webkit-line-clamp: 2;
         }
         .ev-organizer {
-            font-size: clamp(13px, 0.72vw, 21px);
+            font-size: clamp(10px, 0.48vw, 14px);
             font-weight: 600;
             color: #ffffff;
-            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.45);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.45);
             margin-top: 2px;
             white-space: nowrap;
             overflow: hidden;
@@ -298,8 +298,8 @@
                 if (!summary) return;
 
                 summary.style.fontSize = '';
-                let currentPx = parseFloat(window.getComputedStyle(summary).fontSize) || 24;
-                const minPx = 14;
+                let currentPx = parseFloat(window.getComputedStyle(summary).fontSize) || 20;
+                const minPx = 12;
 
                 while (
                     currentPx > minPx &&
