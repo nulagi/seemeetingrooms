@@ -6,7 +6,7 @@
     <title>Meeting Room Schedule — Thursday, November 19, 2026</title>
     <style>
         :root {
-            --room-col-width: clamp(240px, 14vw, 380px);
+            --room-col-width: clamp(300px, 15.5vw, 480px);
         }
         html, body {
             height: 100vh;
@@ -34,7 +34,7 @@
             margin-left: -3px;
             margin-top: -1px;
             background: #ffffff;
-            padding: clamp(14px, 1.2vh, 26px) clamp(18px, 1.4vw, 32px);
+            padding: 18px 26px;
             border-radius: 12px;
             box-sizing: border-box;
             display: flex;
@@ -46,43 +46,43 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: clamp(10px, 1vh, 18px);
-            border-bottom: 1.5px solid #e2e8f0;
-            padding-bottom: clamp(8px, 0.8vh, 14px);
+            margin-bottom: 14px;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 12px;
             flex-shrink: 0;
         }
         h1 {
-            font-size: clamp(1.5rem, 2.2vw, 3.2rem);
-            margin: 0 0 3px 0;
+            font-size: clamp(28px, 2.2vw, 68px);
+            margin: 0 0 4px 0;
             color: #0f172a;
             letter-spacing: -0.01em;
-            line-height: 1.1;
+            line-height: 1.08;
         }
         .sub {
-            color: #475569;
-            font-size: clamp(1rem, 1.45vw, 2.1rem);
-            font-weight: 600;
-            line-height: 1.2;
+            color: #334155;
+            font-size: clamp(20px, 1.4vw, 44px);
+            font-weight: 700;
+            line-height: 1.15;
         }
         .header-right {
             display: flex;
             align-items: center;
-            gap: clamp(14px, 1.5vw, 28px);
+            gap: 24px;
         }
         .generated-stamp {
-            font-size: clamp(0.85rem, 0.95vw, 1.35rem);
+            font-size: clamp(16px, 0.85vw, 26px);
             color: #64748b;
             font-weight: 500;
         }
         .clock {
             background: #f8fafc;
-            border: 1.5px solid #cbd5e1;
-            padding: clamp(6px, 0.6vh, 12px) clamp(14px, 1.2vw, 24px);
+            border: 2px solid #cbd5e1;
+            padding: 8px 22px;
             border-radius: 8px;
             font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-            font-size: clamp(1.3rem, 1.8vw, 2.6rem);
+            font-size: clamp(24px, 1.75vw, 56px);
             font-weight: 700;
-            color: #334155;
+            color: #1e293b;
             line-height: 1.1;
         }
         .schedule-grid {
@@ -90,7 +90,7 @@
             display: flex;
             flex-direction: column;
             min-height: 0;
-            border: 1.5px solid #94a3b8;
+            border: 2px solid #94a3b8;
             border-radius: 8px;
             overflow: hidden;
             background: #F5F5F5;
@@ -99,19 +99,19 @@
             display: grid;
             grid-template-columns: var(--room-col-width) 1fr;
             background: #e2e8f0;
-            border-bottom: 1.5px solid #94a3b8;
-            height: clamp(38px, 3.8vh, 58px);
+            border-bottom: 2px solid #94a3b8;
+            height: clamp(46px, 3.6vh, 72px);
             flex-shrink: 0;
         }
         .corner-spacer {
             display: flex;
             align-items: center;
             justify-content: flex-end;
-            padding-right: clamp(12px, 1vw, 20px);
+            padding-right: 18px;
             font-weight: 700;
-            font-size: clamp(0.9rem, 1.05vw, 1.5rem);
+            font-size: clamp(18px, 1.05vw, 32px);
             color: #334155;
-            border-right: 1.5px solid #94a3b8;
+            border-right: 2px solid #94a3b8;
             background: #e2e8f0;
         }
         .hours-header-track {
@@ -120,11 +120,11 @@
             position: relative;
         }
         .hour-header {
-            border-left: 1px solid #cbd5e1;
+            border-left: 1.5px solid #cbd5e1;
             display: flex;
             align-items: center;
-            padding-left: clamp(6px, 0.5vw, 12px);
-            font-size: clamp(0.95rem, 1.15vw, 1.65rem);
+            padding-left: 10px;
+            font-size: clamp(18px, 1.1vw, 34px);
             font-weight: 700;
             color: #1e293b;
             box-sizing: border-box;
@@ -134,10 +134,10 @@
         }
         .end-hour-label {
             position: absolute;
-            right: clamp(6px, 0.5vw, 12px);
+            right: 10px;
             top: 50%;
             transform: translateY(-50%);
-            font-size: clamp(0.95rem, 1.15vw, 1.65rem);
+            font-size: clamp(18px, 1.1vw, 34px);
             font-weight: 700;
             color: #1e293b;
         }
@@ -152,7 +152,7 @@
             flex: 1;
             display: grid;
             grid-template-columns: var(--room-col-width) 1fr;
-            border-bottom: 1px dashed #cbd5e1;
+            border-bottom: 1.5px dashed #cbd5e1;
             min-height: 0;
             position: relative;
         }
@@ -161,8 +161,8 @@
         }
         .room-label {
             background: #ffffff;
-            border-right: 1.5px solid #94a3b8;
-            padding: 3px clamp(12px, 1vw, 20px);
+            border-right: 2px solid #94a3b8;
+            padding: 4px 18px;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -173,12 +173,12 @@
         }
         .room-name {
             font-weight: 800;
-            font-size: clamp(1rem, 1.25vw, 1.85rem);
+            font-size: clamp(20px, 1.25vw, 38px);
             color: #0f172a;
-            line-height: 1.15;
+            line-height: 1.12;
         }
         .room-sub {
-            font-size: clamp(0.8rem, 0.98vw, 1.4rem);
+            font-size: clamp(15px, 0.92vw, 28px);
             color: #475569;
             font-weight: 600;
             line-height: 1.15;
@@ -198,7 +198,7 @@
             z-index: 2;
         }
         .hour-grid-col {
-            border-left: 1px solid #cbd5e1;
+            border-left: 1.5px solid #cbd5e1;
             height: 100%;
         }
         .hour-grid-col:first-child {
@@ -208,10 +208,10 @@
             position: absolute;
             top: 3px;
             bottom: 3px;
-            border: 1.5px solid #333333;
-            border-left-width: 6px;
+            border: 2px solid #333333;
+            border-left-width: 7px;
             border-radius: 6px;
-            padding: 3px 8px;
+            padding: 4px 10px;
             box-sizing: border-box;
             overflow: hidden;
             display: flex;
@@ -220,14 +220,14 @@
             align-items: center;
             text-align: center;
             z-index: 3;
-            box-shadow: 0 1px 4px rgba(15, 23, 42, 0.14);
+            box-shadow: 0 2px 5px rgba(15, 23, 42, 0.14);
         }
         .ev-summary {
             font-weight: 800;
-            font-size: clamp(0.95rem, 1.15vw, 1.65rem);
-            line-height: 1.15;
+            font-size: clamp(19px, 1.1vw, 34px);
+            line-height: 1.14;
             color: #ffffff;
-            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.45);
             white-space: normal;
             overflow-wrap: anywhere;
             word-break: break-word;
@@ -239,14 +239,14 @@
             min-height: 0;
         }
         .compact-event .ev-summary {
-            font-size: clamp(0.85rem, 1.0vw, 1.4rem);
+            font-size: clamp(17px, 0.95vw, 29px);
             -webkit-line-clamp: 2;
         }
         .ev-organizer {
-            font-size: clamp(0.78rem, 0.92vw, 1.3rem);
+            font-size: clamp(15px, 0.82vw, 25px);
             font-weight: 600;
             color: #ffffff;
-            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.45);
             margin-top: 2px;
             white-space: nowrap;
             overflow: hidden;
@@ -275,7 +275,7 @@
             align-items: center;
         }
         .loading-text {
-            font-size: clamp(2.5rem, 5vw, 7rem);
+            font-size: clamp(48px, 4.5vw, 140px);
             font-weight: 800;
             color: #444444;
             letter-spacing: 0.05em;
@@ -289,7 +289,7 @@
 
         function getLabelColWidthPx() {
             const firstLabel = document.querySelector('.room-label');
-            return firstLabel ? firstLabel.getBoundingClientRect().width : 300;
+            return firstLabel ? firstLabel.getBoundingClientRect().width : 360;
         }
 
         function fitEventText() {
@@ -299,8 +299,8 @@
 
                 // Clear inline override so CSS clamp() sets the starting 4K/viewport size
                 summary.style.fontSize = '';
-                let currentPx = parseFloat(window.getComputedStyle(summary).fontSize) || 24;
-                const minPx = 14;
+                let currentPx = parseFloat(window.getComputedStyle(summary).fontSize) || 32;
+                const minPx = 18;
 
                 while (
                     currentPx > minPx &&
@@ -368,7 +368,7 @@
                     <div class="sub">Thursday, November 19, 2026</div>
                 </div>
                 <div class="header-right">
-                    <div class="generated-stamp">Generated at 13:45 on 19 November 2026</div>
+                    <div class="generated-stamp">Generated at 13:47 on 19 November 2026</div>
                     <div id="live-clock" class="clock">00:00:00</div>
                 </div>
             </div>
